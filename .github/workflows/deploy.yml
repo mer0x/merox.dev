@@ -31,5 +31,5 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: gh-pages  # Asigură-te că această ramură există în repo-ul public
-        folder: source/public  # Directorul generat de Hugo
+        folder: source/public  
         token: ${{ secrets.PAT_TOKEN }}
