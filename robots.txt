@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://beta.merox.dev/sitemap.xml
+Disallow: /
