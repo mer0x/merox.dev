@@ -1,5 +1,3 @@
 User-agent: *
-Disallow: /private/
-Disallow: /tmp/
 Allow: /
-Sitemap: https://www.merox.dev/sitemap.xml
+Sitemap: https://merox.dev/sitemap.xml
