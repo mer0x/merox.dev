@@ -40,7 +40,7 @@
 &lt;td>&lt;img class="customEntitityLogo" src="docker.png"/>&lt;/td>
 &lt;td>&lt;a href="https://docs.merox.dev/homelab/docker/" target="_blank">Docker&lt;/a>&lt;/td>
 &lt;td>Container orchestration and management&lt;/td>
-&lt;td>&lt;font color="orange">On going...&lt;/font>&lt;/td>
+&lt;td>&lt;font color="green">Ready&lt;/font>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;img class="customEntitityLogo" src="kubernetes.svg"/>&lt;/td>
