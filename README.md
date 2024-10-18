@@ -1,12 +1,10 @@
 # merox.dev
 
-[![Deploy Production to GitHub Pages](https://github.com/mer0x/merox.dev/actions/workflows/pages.yml/badge.svg)](https://github.com/mer0x/merox.dev/actions/workflows/pages.yml)
 [![Minimum Hugo Version](https://img.shields.io/static/v1?label=min-HUGO-version&message=0.87.0&color=blue&logo=hugo)](https://github.com/gohugoio/hugo/releases/tag/v0.87.0)
 [![GitHub](https://img.shields.io/github/license/yourusername/merox.dev)](https://github.com/yourusername/merox.dev/blob/main/LICENSE)
 
 **merox.dev** is a personal blog and IT documentation site focused on web development and online security. Built with Hugo and the Blowfish theme, it aims to provide valuable insights and resources derived from 10 years of experience in the industry.
 
-![merox.dev screenshot](https://www.merox.dev/images/screenshot.png)
 
 🌏 [site](https://www.merox.dev)  
 📑 [Theme documentation](https://blowfish.page/docs/)  
