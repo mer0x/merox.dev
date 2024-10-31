@@ -1,3 +1,11 @@
 User-agent: *
+Disallow: /privacy
+Disallow: /tags
+Disallow: /categories
+Disallow: /authors
+Disallow: /ro/tags
+Disallow: /ro/categories
+Disallow: /ro/authors
+Disallow: /terms-and-conditions
 Allow: /
 Sitemap: https://merox.dev/sitemap.xml
