@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Merox.dev - IT Blog &amp; Documentation on Merox</title><link>https://merox.dev/</link><description>Recent content in Merox.dev - IT Blog &amp; Documentation on Merox</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@merox.dev (Robert Melcher)</managingEditor><webMaster>hello@merox.dev (Robert Melcher)</webMaster><copyright>© 2024 Robert Melcher</copyright><lastBuildDate>Tue, 05 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://merox.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Premium Services</title><link>https://merox.dev/service/</link><pubDate>Mon, 04 Nov 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/service/</guid><description>&lt;style>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Merox.dev - IT Blog &amp; Documentation on Merox</title><link>https://merox.dev/</link><description>Recent content in Merox.dev - IT Blog &amp; Documentation on Merox</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>hello@merox.dev (Robert Melcher)</managingEditor><webMaster>hello@merox.dev (Robert Melcher)</webMaster><copyright>© 2024 Robert Melcher</copyright><lastBuildDate>Tue, 05 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://merox.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Support &amp; Exclusive Services</title><link>https://merox.dev/donate/</link><pubDate>Mon, 04 Nov 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/donate/</guid><description>&lt;style>
 .services-wrapper {
 max-width: 1200px;
 margin: 0 auto;
@@ -7,6 +7,43 @@ display: flex;
 flex-wrap: wrap;
 gap: 2rem;
 justify-content: center;
+}
+.intro-box {
+padding: 1.5rem;
+max-width: 960px;
+margin: 0 auto 2rem;
+text-align: center;
+color: #a0aec0;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.intro-box p {
+font-size: 1.2rem;
+margin-bottom: 1.5rem;
+}
+.donation-buttons {
+display: flex;
+gap: 1.5rem;
+justify-content: center;
+align-items: center;
+margin-top: 1rem;
+flex-wrap: wrap;
+}
+.donation-option {
+text-align: center;
+}
+.bmc-button {
+cursor: pointer;
+}
+.donation-label {
+font-size: 0.9rem;
+color: #a0aec0;
+margin-top: 0.5rem;
+}
+@media (max-width: 600px) {
+.donation-buttons {
+flex-direction: column;
+}
 }
 .service-card {
 background: rgba(17, 25, 40, 0.85);
@@ -56,7 +93,17 @@ display: inline-block;
 color: #a0aec0;
 font-size: 1rem;
 line-height: 1.6;
-margin-bottom: 2rem;
+margin-bottom: 1.2rem;
+}
+.donation-highlight {
+font-weight: bold;
+color: #4299e1;
+font-size: 1.05rem;
+background: rgba(66, 153, 225, 0.1);
+padding: 0.3rem 0.5rem;
+border-radius: 6px;
+display: inline-block;
+margin-bottom: 1.5rem;
 }
 .service-button {
 display: inline-block;
@@ -67,7 +114,6 @@ text-decoration: none;
 border-radius: 8px;
 font-weight: 600;
 transition: all 0.3s ease;
-margin-top: auto;
 }
 .service-button:hover {
 transform: translateY(-3px);
@@ -75,13 +121,10 @@ box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3), 0 0 15px rgba(66, 153, 225, 0.4)
 border-radius: 8px;
 }
 &lt;/style>
-&lt;div class="services-wrapper">
-&lt;div class="service-card">
-&lt;div class="service-image" style="background-image: url('1premium.png');">&lt;/div>
-&lt;h2 class="service-title">Custom Website Solutions&lt;/h2>
-&lt;p class="service-description">
-Need a sleek presentation site or a robust e-commerce platform? Get in touch! Delivery in ~2 weeks, using WordPress, Hugo, or Shopify for top-notch results.
-&lt;/p></description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/service/featured.jpg"/></item><item><title>Cybersecurity Trends 2025: Future-Proofing Security</title><link>https://merox.dev/blog/cybersecurity-in-2025/</link><pubDate>Mon, 28 Oct 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/cybersecurity-in-2025/</guid><description>An in-depth look at cybersecurity trends for 2025. Discover how to address AI, quantum computing, IoT, 5G, and zero-trust challenges to secure your organization.</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/cybersecurity-in-2025/featured-cys.jpg"/></item><item><title>My First Steps in IT Career</title><link>https://merox.dev/blog/first-steps-in-it-career/</link><pubDate>Fri, 25 Oct 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/first-steps-in-it-career/</guid><description>This marks the beginning of my journey into the IT industry. At that time, I was 20 years old and in my second year of a Computer Science program&amp;hellip;</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/first-steps-in-it-career/featured-warsaw.JPG"/></item><item><title>Homelab</title><link>https://merox.dev/laboratory/</link><pubDate>Thu, 10 Oct 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/laboratory/</guid><description>Homelab, the most ambitious and challenging project I’ve ever undertaken</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/laboratory/featured.jpg"/></item><item><title>Resume</title><link>https://merox.dev/resume/</link><pubDate>Thu, 10 Oct 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/resume/</guid><description>Explore Robert Melcher (Merox&amp;rsquo;s) professional journey in IT, showcasing extensive experience in web development, server management, and hosting services. Discover skills, projects, and milestones that highlight a dedicated and diverse career in technology.</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/resume/featured.JPG"/></item><item><title>Websites Portofolio</title><link>https://merox.dev/websites/</link><pubDate>Thu, 10 Oct 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/websites/</guid><description>Discover Merox&amp;rsquo;s portfolio of website projects, developed with expertise in platforms like WordPress, Joomla, Hugo, and MkDocs. Each project highlights a commitment to secure, efficient, and user-centered web solutions tailored to diverse client needs.</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/websites/featuredzz.jpg"/></item><item><title>Smart Home Journey</title><link>https://merox.dev/blog/smarthome-journey/</link><pubDate>Mon, 30 Sep 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/smarthome-journey/</guid><description>What started as a simple wish to control lights using my phone quickly turned into a fully integrated smart home setup&amp;hellip;</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/smarthome-journey/featured8.webp"/></item><item><title>How to Set Up Your Own AI at Home</title><link>https://merox.dev/blog/run-ai-at-home/</link><pubDate>Fri, 16 Aug 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/run-ai-at-home/</guid><description>In this article, I will go over how I set these tools up on my server as well as their configurations. The difficulties that were there , the solutions I found and useful tips&amp;hellip;</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/run-ai-at-home/featured7.webp"/></item><item><title>Setting Up Dell R720 Server in the Home Lab</title><link>https://merox.dev/blog/dell-r720/</link><pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/dell-r720/</guid><description>I recently stumbled upon an incredible deal for the Dell PowerEdge R720 server. This powerhouse boasts impressive specifications&amp;hellip;</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/dell-r720/featured.webp"/></item><item><title>Who's Merox?</title><link>https://merox.dev/about/</link><pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/about/</guid><description>Seasoned System Administrator and Cybersecurity Engineer, with a profound passion for Linux, Networking, and Security.</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/about/featured.JPG"/></item><item><title>Tailscale site-to-site pfSense - Linux</title><link>https://merox.dev/blog/tailscale-site-to-site/</link><pubDate>Sat, 06 Apr 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/tailscale-site-to-site/</guid><description>I&amp;rsquo;ve decided to implement monitoring for my homelab through a cloud virtual machine. As cloud provider I&amp;rsquo;ve opted for Hetzner&amp;hellip;</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/tailscale-site-to-site/featured3.webp"/></item><item><title>Deploying a Kubernetes-Based Media Server</title><link>https://merox.dev/blog/kubernetes-media-server/</link><pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/kubernetes-media-server/</guid><description>For a long time, I&amp;rsquo;ve been on the hunt for a comprehensive and well-crafted tutorial to deploy a media server on my Kubernetes cluster.</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/kubernetes-media-server/featured2.webp"/></item><item><title/><link>https://merox.dev/privacy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/privacy/</guid><description>&lt;h1 class="relative group">Privacy Policy
+&lt;div class="intro-box">
+&lt;p>
+Your support makes a real difference! Donations over specific amounts via BuyMeACoffee or PayPal unlock access to exclusive services below. Make a contribution, select a service, and I'll reach out to start our collaboration.
+&lt;/p></description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/donate/featured.jpg"/></item><item><title>Cybersecurity Trends 2025: Future-Proofing Security</title><link>https://merox.dev/blog/cybersecurity-in-2025/</link><pubDate>Mon, 28 Oct 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/cybersecurity-in-2025/</guid><description>An in-depth look at cybersecurity trends for 2025. Discover how to address AI, quantum computing, IoT, 5G, and zero-trust challenges to secure your organization.</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/cybersecurity-in-2025/featured-cys.jpg"/></item><item><title>My First Steps in IT Career</title><link>https://merox.dev/blog/first-steps-in-it-career/</link><pubDate>Fri, 25 Oct 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/first-steps-in-it-career/</guid><description>This marks the beginning of my journey into the IT industry. At that time, I was 20 years old and in my second year of a Computer Science program&amp;hellip;</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/first-steps-in-it-career/featured-warsaw.JPG"/></item><item><title>Homelab</title><link>https://merox.dev/laboratory/</link><pubDate>Thu, 10 Oct 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/laboratory/</guid><description>Homelab, the most ambitious and challenging project I’ve ever undertaken</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/laboratory/featured.jpg"/></item><item><title>Resume</title><link>https://merox.dev/resume/</link><pubDate>Thu, 10 Oct 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/resume/</guid><description>Explore Robert Melcher (Merox&amp;rsquo;s) professional journey in IT, showcasing extensive experience in web development, server management, and hosting services. Discover skills, projects, and milestones that highlight a dedicated and diverse career in technology.</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/resume/featured.JPG"/></item><item><title>Websites Portofolio</title><link>https://merox.dev/websites/</link><pubDate>Thu, 10 Oct 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/websites/</guid><description>Discover Merox&amp;rsquo;s portfolio of website projects, developed with expertise in platforms like WordPress, Joomla, Hugo, and MkDocs. Each project highlights a commitment to secure, efficient, and user-centered web solutions tailored to diverse client needs.</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/websites/featuredzz.jpg"/></item><item><title>Smart Home Journey</title><link>https://merox.dev/blog/smarthome-journey/</link><pubDate>Mon, 30 Sep 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/smarthome-journey/</guid><description>What started as a simple wish to control lights using my phone quickly turned into a fully integrated smart home setup&amp;hellip;</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/smarthome-journey/featured8.webp"/></item><item><title>How to Set Up Your Own AI at Home</title><link>https://merox.dev/blog/run-ai-at-home/</link><pubDate>Fri, 16 Aug 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/run-ai-at-home/</guid><description>In this article, I will go over how I set these tools up on my server as well as their configurations. The difficulties that were there , the solutions I found and useful tips&amp;hellip;</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/run-ai-at-home/featured7.webp"/></item><item><title>Setting Up Dell R720 Server in the Home Lab</title><link>https://merox.dev/blog/dell-r720/</link><pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/dell-r720/</guid><description>I recently stumbled upon an incredible deal for the Dell PowerEdge R720 server. This powerhouse boasts impressive specifications&amp;hellip;</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/dell-r720/featured.webp"/></item><item><title>Who's Merox?</title><link>https://merox.dev/about/</link><pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/about/</guid><description>Seasoned System Administrator and Cybersecurity Engineer, with a profound passion for Linux, Networking, and Security.</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/about/featured.JPG"/></item><item><title>Tailscale site-to-site pfSense - Linux</title><link>https://merox.dev/blog/tailscale-site-to-site/</link><pubDate>Sat, 06 Apr 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/tailscale-site-to-site/</guid><description>I&amp;rsquo;ve decided to implement monitoring for my homelab through a cloud virtual machine. As cloud provider I&amp;rsquo;ve opted for Hetzner&amp;hellip;</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/tailscale-site-to-site/featured3.webp"/></item><item><title>Deploying a Kubernetes-Based Media Server</title><link>https://merox.dev/blog/kubernetes-media-server/</link><pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/blog/kubernetes-media-server/</guid><description>For a long time, I&amp;rsquo;ve been on the hunt for a comprehensive and well-crafted tutorial to deploy a media server on my Kubernetes cluster.</description><media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://merox.dev/blog/kubernetes-media-server/featured2.webp"/></item><item><title/><link>https://merox.dev/privacy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>hello@merox.dev (Robert Melcher)</author><guid>https://merox.dev/privacy/</guid><description>&lt;h1 class="relative group">Privacy Policy
 &lt;div id="privacy-policy" class="anchor">&lt;/div>
 &lt;/h1>
 &lt;p>&lt;strong>Last updated: October 19, 2024&lt;/strong>&lt;/p>
