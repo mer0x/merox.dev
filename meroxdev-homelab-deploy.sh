@@ -55,8 +55,11 @@ if [ ! -f "$SSH_KEY_PATH" ]; then
     echo "Your public key is:"
     cat "${SSH_KEY_PATH}.pub"
     echo "Add the public key to GitHub under Deploy Keys:"
-    echo "Press Enter once you've added the key to GitHub..."
-    read -r
+    echo "Press Enter once you've added the key to GitHub or type 'skip' to continue without confirmation..."
+    read -r input
+    if [ "$input" == "skip" ]; then
+        echo "Skipping manual confirmation of Deploy Keys."
+    fi
 else
     echo "SSH key already exists at $SSH_KEY_PATH."
 fi
