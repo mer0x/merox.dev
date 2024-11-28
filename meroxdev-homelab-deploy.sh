@@ -1,98 +1,97 @@
 #!/bin/bash
 
-# Funcție pentru verificarea și instalarea unui pachet
+# Function to check and install a package if missing
 install_if_missing() {
     local package=$1
     if ! dpkg -l | grep -qw "$package"; then
-        echo "$package nu este instalat. Se instalează..."
+        echo "$package is not installed. Installing..."
         apt update && apt install -y "$package"
     else
-        echo "$package este deja instalat."
+        echo "$package is already installed."
     fi
 }
 
-# Verificare și instalare sudo dacă lipsește
+# Check and install sudo if missing
 if ! command -v sudo &> /dev/null; then
-    echo "sudo nu este instalat. Se instalează..."
+    echo "sudo is not installed. Installing..."
     apt update && apt install -y sudo
 else
-    echo "sudo este deja instalat."
+    echo "sudo is already installed."
 fi
 
-# 1. Instalare Git și alte pachete esențiale
+# 1. Install Git and other essential packages
 install_if_missing "git"
 install_if_missing "curl"
 install_if_missing "unzip"
 install_if_missing "lsb-release"
 
-# 2. Instalare Ansible
+# 2. Install Ansible
 if ! command -v ansible &> /dev/null; then
-    echo "Ansible nu este instalat. Se instalează..."
+    echo "Ansible is not installed. Installing..."
     sudo apt update
     sudo apt install -y software-properties-common
     sudo add-apt-repository --yes --update ppa:ansible/ansible
     sudo apt install -y ansible
 else
-    echo "Ansible este deja instalat."
+    echo "Ansible is already installed."
 fi
 
-# 3. Instalare Terraform
+# 3. Install Terraform
 if ! command -v terraform &> /dev/null; then
-    echo "Terraform nu este instalat. Se instalează..."
+    echo "Terraform is not installed. Installing..."
     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
     echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
     sudo apt update
     sudo apt install -y terraform
 else
-    echo "Terraform este deja instalat."
+    echo "Terraform is already installed."
 fi
 
-# 4. Generare cheie SSH
+# 4. Generate SSH key
 SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
 if [ ! -f "$SSH_KEY_PATH" ]; then
-    echo "Generare cheie SSH..."
+    echo "Generating SSH key..."
     ssh-keygen -t ed25519 -C "merox@homelab" -f "$SSH_KEY_PATH" -N ""
-    echo "Cheia publică este:"
+    echo "Your public key is:"
     cat "${SSH_KEY_PATH}.pub"
-    echo "Adaugă cheia publică în GitHub, în secțiunea Deploy Keys:"
-    cat "${SSH_KEY_PATH}.pub"
-    echo "Apasă Enter după ce ai adăugat cheia în GitHub..."
+    echo "Add the public key to GitHub under Deploy Keys:"
+    echo "Press Enter once you've added the key to GitHub..."
     read -r
 else
-    echo "Cheia SSH există deja la $SSH_KEY_PATH."
+    echo "SSH key already exists at $SSH_KEY_PATH."
 fi
 
-# 5. Verificare conexiune SSH cu GitHub
-echo "Verific conexiunea SSH cu GitHub..."
+# 5. Test SSH connection to GitHub
+echo "Testing SSH connection to GitHub..."
 if ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
-    echo "Conexiunea SSH este funcțională."
+    echo "SSH connection is functional."
 else
-    echo "Conexiunea SSH a eșuat. Verifică cheile SSH și permisiunile."
+    echo "SSH connection failed. Check your SSH keys and permissions."
     exit 1
 fi
 
-# 6. Clonează repository-ul
+# 6. Clone the repository
 REPO_URL="git@github.com:mer0x/homelab.git"
 REPO_DIR="$HOME/homelab"
 if [ ! -d "$REPO_DIR" ]; then
-    echo "Clonare repository $REPO_URL în $REPO_DIR..."
+    echo "Cloning repository $REPO_URL into $REPO_DIR..."
     git clone "$REPO_URL" "$REPO_DIR"
 else
-    echo "Repository-ul există deja la $REPO_DIR."
+    echo "Repository already exists at $REPO_DIR."
 fi
 
-# 7. Rulează Terraform init și apply
+# 7. Run Terraform init and apply
 TERRAFORM_DIR="$REPO_DIR/terraform/proxmox-lxc"
 if [ -d "$TERRAFORM_DIR" ]; then
-    echo "Navighez la $TERRAFORM_DIR..."
+    echo "Navigating to $TERRAFORM_DIR..."
     cd "$TERRAFORM_DIR" || exit
-    echo "Initializare Terraform..."
+    echo "Initializing Terraform..."
     terraform init
-    echo "Aplic configurațiile Terraform..."
+    echo "Applying Terraform configuration..."
     terraform apply -auto-approve
 else
-    echo "Directorul Terraform $TERRAFORM_DIR nu există. Verifică repository-ul."
+    echo "Terraform directory $TERRAFORM_DIR does not exist. Check the repository."
     exit 1
 fi
 
-echo "Proces complet! Terraform s-a ocupat și de Ansible."
+echo "Process complete! Terraform has also taken care of Ansible."
