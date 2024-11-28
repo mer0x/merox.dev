@@ -77,7 +77,7 @@ fi
 
 # 6. Clone the repository
 REPO_URL="git@github.com:mer0x/homelab.git"
-REPO_DIR="/home/homelab"
+REPO_DIR="$HOME/homelab"
 if [ ! -d "$REPO_DIR" ]; then
     echo "Cloning repository $REPO_URL into $REPO_DIR..."
     GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone "$REPO_URL" "$REPO_DIR"
