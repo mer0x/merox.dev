@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Function to print messages in red
-print_red() {
-    echo -e "\e[31m$1\e[0m"
-}
-
 # Function to check and install a package if missing
 install_if_missing() {
     local package=$1
@@ -59,19 +54,19 @@ if [ ! -f "$SSH_KEY_PATH" ]; then
     ssh-keygen -t ed25519 -C "merox@homelab" -f "$SSH_KEY_PATH" -N ""
     echo "Your public key is:"
     cat "${SSH_KEY_PATH}.pub"
-    print_red "Add the public key to GitHub under Deploy Keys:"
-    print_red "You have 90 seconds to add the key to GitHub. Press Enter once done."
-    read -t 90 -r
+    echo "Add the public key to GitHub under Deploy Keys:"
+    echo "Press Enter once you've added the key to GitHub..."
+    read -r
 else
     echo "SSH key already exists at $SSH_KEY_PATH."
 fi
 
 # 5. Test SSH connection to GitHub
 echo "Testing SSH connection to GitHub..."
-if ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
+if ssh -o StrictHostKeyChecking=no -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
     echo "SSH connection is functional."
 else
-    print_red "SSH connection failed. Check your SSH keys and permissions. Re-run the script after adding the SSH key."
+    echo "SSH connection failed. Check your SSH keys and permissions."
     exit 1
 fi
 
