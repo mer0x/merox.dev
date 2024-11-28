@@ -55,11 +55,8 @@ if [ ! -f "$SSH_KEY_PATH" ]; then
     echo "Your public key is:"
     cat "${SSH_KEY_PATH}.pub"
     echo "Add the public key to GitHub under Deploy Keys:"
-    echo "Press Enter once you've added the key to GitHub or type 'skip' to continue without confirmation..."
-    read -r input
-    if [ "$input" == "skip" ]; then
-        echo "Skipping manual confirmation of Deploy Keys."
-    fi
+    echo "Press Enter once you've added the key to GitHub..."
+    read -r
 else
     echo "SSH key already exists at $SSH_KEY_PATH."
 fi
@@ -75,7 +72,7 @@ fi
 
 # 6. Clone the repository
 REPO_URL="git@github.com:mer0x/homelab.git"
-REPO_DIR="/home/homelab"
+REPO_DIR="$HOME/homelab"
 if [ ! -d "$REPO_DIR" ]; then
     echo "Cloning repository $REPO_URL into $REPO_DIR..."
     git clone "$REPO_URL" "$REPO_DIR"
