@@ -55,6 +55,7 @@ if [ ! -f "$SSH_KEY_PATH" ]; then
     echo "Your public key is:"
     cat "${SSH_KEY_PATH}.pub"
     echo "Add the public key to GitHub under Deploy Keys:"
+    cat "${SSH_KEY_PATH}.pub"
     echo "Press Enter once you've added the key to GitHub..."
     read -r
 else
@@ -63,7 +64,7 @@ fi
 
 # 5. Test SSH connection to GitHub
 echo "Testing SSH connection to GitHub..."
-if ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
+if ssh -o StrictHostKeyChecking=no -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
     echo "SSH connection is functional."
 else
     echo "SSH connection failed. Check your SSH keys and permissions."
@@ -75,7 +76,7 @@ REPO_URL="git@github.com:mer0x/homelab.git"
 REPO_DIR="$HOME/homelab"
 if [ ! -d "$REPO_DIR" ]; then
     echo "Cloning repository $REPO_URL into $REPO_DIR..."
-    git clone "$REPO_URL" "$REPO_DIR"
+    GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone "$REPO_URL" "$REPO_DIR"
 else
     echo "Repository already exists at $REPO_DIR."
 fi
