@@ -60,7 +60,6 @@ if [ ! -f "$SSH_KEY_PATH" ]; then
     echo "Your public key is:"
     cat "${SSH_KEY_PATH}.pub"
     print_red "Add the public key to GitHub under Deploy Keys:"
-    cat "${SSH_KEY_PATH}.pub"
     print_red "You have 90 seconds to add the key to GitHub. Press Enter once done."
     read -t 90 -r
 else
