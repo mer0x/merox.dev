@@ -5,7 +5,7 @@ install_if_missing() {
     local package=$1
     if ! dpkg -l | grep -qw "$package"; then
         echo "$package is not installed. Installing..."
-        sudo apt update && sudo apt install -y "$package"
+        apt update && apt install -y "$package"
     else
         echo "$package is already installed."
     fi
@@ -28,6 +28,13 @@ install_if_missing "lsb-release"
 # 2. Install Ansible
 if ! command -v ansible &> /dev/null; then
     echo "Ansible is not installed. Installing..."
+    
+    # Fix locale issue for Ansible
+    if ! locale -a | grep -qw "UTF-8"; then
+        echo "Locale issue detected. Setting LC_ALL to C.UTF-8."
+        export LC_ALL=C.UTF-8
+    fi
+    
     sudo apt update
     sudo apt install -y software-properties-common
     sudo add-apt-repository --yes --update ppa:ansible/ansible
@@ -73,13 +80,10 @@ fi
 
 # 6. Clone the repository
 REPO_URL="git@github.com:mer0x/homelab.git"
-REPO_DIR="/home/homelab"
-
-# Check if /home/homelab exists
+REPO_DIR="$HOME/homelab"
 if [ ! -d "$REPO_DIR" ]; then
     echo "Cloning repository $REPO_URL into $REPO_DIR..."
-    sudo GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone "$REPO_URL" "$REPO_DIR"
-    sudo chown -R "$USER:$USER" "$REPO_DIR"
+    GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone "$REPO_URL" "$REPO_DIR"
 else
     echo "Repository already exists at $REPO_DIR."
 fi
@@ -98,4 +102,4 @@ else
     exit 1
 fi
 
-echo "Process complete!"
+echo "Process complete! Terraform has also taken care of Ansible."
