@@ -89,7 +89,7 @@ else
 fi
 
 # 7. Run Terraform init and apply
-TERRAFORM_DIR="$REPO_DIR/terraform/proxmox-lxc"
+TERRAFORM_DIR="$REPO_DIR/terraform/"
 if [ -d "$TERRAFORM_DIR" ]; then
     echo "Navigating to $TERRAFORM_DIR..."
     cd "$TERRAFORM_DIR" || exit
