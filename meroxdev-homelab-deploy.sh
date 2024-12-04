@@ -1,16 +1,26 @@
 #!/bin/bash
 
-echo -e "\033[36;1m ██╗  ██╗  ██████╗   ██████╗ \033[0m" 
-echo -e "\033[36;1m ██║  ██║ ██╔═══██╗ ██╔═══██╗\033[0m"
-echo -e "\033[36;1m ███████║ ██║   ██║ ██║      \033[0m"
-echo -e "\033[36;1m ██╔══██║ ██║   ██║ ██║      \033[0m"
-echo -e "\033[36;1m ██║  ██║ ╚██████╔╝ ╚██████╔╝\033[0m"
-echo -e "\033[36;1m ╚═╝  ╚═╝  ╚═════╝   ╚═════╝ \033[0m"
-echo -e "\033[36;1m      ██████╗  ██████╗       \033[0m"
-echo -e "\033[36;1m      ╚═════╝  ╚═════╝       \033[0m"
-echo -e "\033[33;1m           Homelab as Code           \033[0m"
-echo -e "\033[33;1m          by www.merox.dev           \033[0m"
+# Logo
+echo -e "\033[36;1m ██╗  ██╗  ██████╗ \033[0m" 
+echo -e "\033[36;1m ██║  ██║ ██╔═══██╗\033[0m"
+echo -e "\033[36;1m ███████║ ██║      \033[0m"
+echo -e "\033[36;1m ██╔══██║ ██║   ██║\033[0m"
+echo -e "\033[36;1m ██║  ██║ ╚██████╔╝\033[0m"
+echo -e "\033[36;1m ╚═╝  ╚═╝  ╚═════╝ \033[0m"
+echo -e "\033[36;1m  ██████╗   ██████╗\033[0m"
+echo -e "\033[36;1m  ╚═════╝   ╚═════╝\033[0m"
+echo -e "\033[33;1m  Homelab as Code by Merox.dev \033[0m"
+echo -e "\n"
 
+# Ensure sudo is installed without using sudo
+if ! command -v sudo &> /dev/null; then
+    echo "sudo is not installed. Installing..."
+    apt update && apt install -y sudo
+else
+    echo "sudo is already installed."
+fi
+
+# Function to check and install a package if missing
 install_if_missing() {
     local package=$1
     if ! dpkg -l | grep -qw "$package"; then
@@ -20,9 +30,6 @@ install_if_missing() {
         echo "$package is already installed."
     fi
 }
-
-# Ensure sudo is installed
-install_if_missing "sudo"
 
 # Install essential packages
 for package in git curl unzip lsb-release; do
@@ -99,4 +106,4 @@ else
     exit 1
 fi
 
-echo "Process complete! Your Homelab is now live ."
+echo "Process complete! Terraform has also taken care of Ansible."
