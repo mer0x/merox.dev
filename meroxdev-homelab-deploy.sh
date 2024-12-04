@@ -1,40 +1,38 @@
 #!/bin/bash
 
-# Function to check and install a package if missing
+echo -e "\033[36;1m ██╗  ██╗  ██████╗   ██████╗ \033[0m" 
+echo -e "\033[36;1m ██║  ██║ ██╔═══██╗ ██╔═══██╗\033[0m"
+echo -e "\033[36;1m ███████║ ██║   ██║ ██║      \033[0m"
+echo -e "\033[36;1m ██╔══██║ ██║   ██║ ██║      \033[0m"
+echo -e "\033[36;1m ██║  ██║ ╚██████╔╝ ╚██████╔╝\033[0m"
+echo -e "\033[36;1m ╚═╝  ╚═╝  ╚═════╝   ╚═════╝ \033[0m"
+echo -e "\033[36;1m      ██████╗  ██████╗       \033[0m"
+echo -e "\033[36;1m      ╚═════╝  ╚═════╝       \033[0m"
+echo -e "\033[33;1m           Homelab as Code           \033[0m"
+echo -e "\033[33;1m          by www.merox.dev           \033[0m"
+
 install_if_missing() {
     local package=$1
     if ! dpkg -l | grep -qw "$package"; then
-        echo "$package is not installed. Installing..."
-        apt update && apt install -y "$package"
+        echo "Installing $package..."
+        sudo apt update && sudo apt install -y "$package"
     else
         echo "$package is already installed."
     fi
 }
 
-# Check and install sudo if missing
-if ! command -v sudo &> /dev/null; then
-    echo "sudo is not installed. Installing..."
-    apt update && apt install -y sudo
-else
-    echo "sudo is already installed."
-fi
+# Ensure sudo is installed
+install_if_missing "sudo"
 
-# 1. Install Git and other essential packages
-install_if_missing "git"
-install_if_missing "curl"
-install_if_missing "unzip"
-install_if_missing "lsb-release"
+# Install essential packages
+for package in git curl unzip lsb-release; do
+    install_if_missing "$package"
+done
 
-# 2. Install Ansible
+# Install Ansible
 if ! command -v ansible &> /dev/null; then
-    echo "Ansible is not installed. Installing..."
-    
-    # Fix locale issue for Ansible
-    if ! locale -a | grep -qw "UTF-8"; then
-        echo "Locale issue detected. Setting LC_ALL to C.UTF-8."
-        export LC_ALL=C.UTF-8
-    fi
-    
+    echo "Installing Ansible..."
+    export LC_ALL=C.UTF-8
     sudo apt update
     sudo apt install -y software-properties-common
     sudo add-apt-repository --yes --update ppa:ansible/ansible
@@ -43,9 +41,9 @@ else
     echo "Ansible is already installed."
 fi
 
-# 3. Install Terraform
+# Install Terraform
 if ! command -v terraform &> /dev/null; then
-    echo "Terraform is not installed. Installing..."
+    echo "Installing Terraform..."
     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
     echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
     sudo apt update
@@ -54,21 +52,21 @@ else
     echo "Terraform is already installed."
 fi
 
-# 4. Generate SSH key
+# Generate SSH key
 SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
 if [ ! -f "$SSH_KEY_PATH" ]; then
     echo "Generating SSH key..."
     ssh-keygen -t ed25519 -C "merox@homelab" -f "$SSH_KEY_PATH" -N ""
-    echo "Your public key is:"
+    
+    echo -e "\e[32mYour public key is:\e[0m"
     cat "${SSH_KEY_PATH}.pub"
-    echo "Add the public key to GitHub under Deploy Keys:"
-    echo "Press Enter once you've added the key to GitHub..."
+    echo -e "\e[33mAdd the public key to GitHub under Deploy Keys and press Enter...\e[0m"
     read -r
 else
     echo "SSH key already exists at $SSH_KEY_PATH."
 fi
 
-# 5. Test SSH connection to GitHub
+# Test SSH connection to GitHub
 echo "Testing SSH connection to GitHub..."
 if ssh -o StrictHostKeyChecking=no -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
     echo "SSH connection is functional."
@@ -77,7 +75,7 @@ else
     exit 1
 fi
 
-# 6. Clone the repository
+# Clone the repository
 REPO_URL="git@github.com:mer0x/homelab.git"
 REPO_DIR="/home/homelab"
 if [ ! -d "$REPO_DIR" ]; then
@@ -87,7 +85,7 @@ else
     echo "Repository already exists at $REPO_DIR."
 fi
 
-# 7. Run Terraform init and apply
+# Run Terraform init and apply
 TERRAFORM_DIR="$REPO_DIR/terraform/"
 if [ -d "$TERRAFORM_DIR" ]; then
     echo "Navigating to $TERRAFORM_DIR..."
@@ -101,4 +99,4 @@ else
     exit 1
 fi
 
-echo "Process complete! Terraform has also taken care of Ansible."
+echo "Process complete! Your Homelab is now live ."
