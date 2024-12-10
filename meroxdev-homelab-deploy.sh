@@ -65,28 +65,6 @@ read -p "Will you be using a Public or Private repository? (public/private): " R
 # Prompt for repository link
 read -p "Please enter the repository link: " REPO_URL
 
-# Clone the repository
-REPO_DIR="/home/homelab"
-if [ ! -d "$REPO_DIR" ]; then
-    echo "Cloning repository $REPO_URL into $REPO_DIR..."
-    if [ "$REPO_TYPE" == "private" ]; then
-        GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone "$REPO_URL" "$REPO_DIR"
-    else
-        git clone "$REPO_URL" "$REPO_DIR"
-    fi
-else
-    echo "Repository already exists at $REPO_DIR."
-fi
-
-# Ask if the user has edited the specific files
-echo -e "\e[33mHave you edited the specific files declared in the tutorial?\n(Visit: \e[36mhttps://merox.dev/blog/homelab-as-code\e[33m)\e[0m"
-read -p "(yes/no): " EDITED_FILES
-
-if [ "$EDITED_FILES" != "yes" ]; then
-    echo "Please edit the specific files declared in the tutorial before proceeding."
-    exit 0
-fi
-
 if [ "$REPO_TYPE" == "private" ]; then
     # Generate SSH key
     SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
@@ -110,6 +88,28 @@ if [ "$REPO_TYPE" == "private" ]; then
         echo "SSH connection failed. Check your SSH keys and permissions."
         exit 1
     fi
+fi
+
+# Clone the repository
+REPO_DIR="/home/homelab"
+if [ ! -d "$REPO_DIR" ]; then
+    echo "Cloning repository $REPO_URL into $REPO_DIR..."
+    if [ "$REPO_TYPE" == "private" ]; then
+        GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone "$REPO_URL" "$REPO_DIR"
+    else
+        git clone "$REPO_URL" "$REPO_DIR"
+    fi
+else
+    echo "Repository already exists at $REPO_DIR."
+fi
+
+# Ask if the user has edited the specific files
+echo -e "\e[33mHave you edited the specific files declared in the tutorial?\n(Visit: \e[36mhttps://merox.dev/blog/homelab-as-code\e[33m)\e[0m"
+read -p "(yes/no): " EDITED_FILES
+
+if [ "$EDITED_FILES" != "yes" ]; then
+    echo "Please edit the specific files declared in the tutorial before proceeding."
+    exit 0
 fi
 
 # Run Terraform init and apply
