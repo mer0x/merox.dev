@@ -4,7 +4,7 @@
 echo -e "\033[36;1m ██╗  ██╗  ██████╗ \033[0m" 
 echo -e "\033[36;1m ██║  ██║ ██╔═══██╗\033[0m"
 echo -e "\033[36;1m ███████║ ██║      \033[0m"
-echo -e "\033[36;1m ██╔══██║ ██a═ ██║\033[0m"
+echo -e "\033[36;1m ██╔══██║ ██    ██║\033[0m"
 echo -e "\033[36;1m ██║  ██║ ╚██████╔╝\033[0m"
 echo -e "\033[36;1m ╚═╝  ╚═╝  ╚═════╝ \033[0m"
 echo -e "\033[36;1m  ██████╗   ██████╗\033[0m"
@@ -60,10 +60,10 @@ else
 fi
 
 # Ask for repository type
-read -p "Will you be using a Public or Private repository? (public/private): " REPO_TYPE
+read -p "\e[33mWill you be using a Public or Private repository? (public/private): \e[0m" REPO_TYPE
 
 # Prompt for repository link
-read -p "Please enter the repository link: " REPO_URL
+read -p "\e[33mPlease enter the repository link: \e[0m" REPO_URL
 
 if [ "$REPO_TYPE" == "private" ]; then
     # Generate SSH key
@@ -126,4 +126,4 @@ else
     exit 1
 fi
 
-echo "Process complete! Terraform has also taken care of Ansible."
+echo "Process complete! Visit www.merox.dev for more :)."
