@@ -12,10 +12,6 @@ echo -e "\033[36;1m                         \033[0m"
 echo -e "\033[33;1m Homelab as Code by Merox.dev \033[0m"
 echo -e "\n"
 
-# Ask for deployment type (LXC or VM)
-echo -e "\e[33mDo you want to deploy to LXC or VM? (lxc/vm): \e[0m"
-read DEPLOY_TYPE
-
 # Ensure sudo is installed without using sudo
 if ! command -v sudo &> /dev/null; then
     echo "sudo is not installed. Installing..."
@@ -111,15 +107,11 @@ else
     echo "SSH key already exists at $SSH_KEY_PATH."
 fi
 
-# Important Notes if VM is selected
-if [ "$DEPLOY_TYPE" == "vm" ]; then
-    echo -e "\e[32mPlease make sure to update the SSH public key in the following files:\e[0m"
-    echo -e "\e[32m- /home/homelab/terraform/modules/docker_vm/main_tf (replace YOUR_SSH_PUBLIC_KEY)\e[0m"
-    echo -e "\e[32m- /home/homelab/packer/ubuntu-server-jammy-docker/http/user-data (update ssh_authorized_keys: - ssh-rsa)\e[0m"
-    echo -e "\e[35m- /home/homelab/packer/ubuntu-server-jammy-docker/ubuntu-server-jammy-docker.pkr.hcl (CHANGE DEPLOYMENT_IP WITH IP WHERE YOU RUN THIS SCRIPT)\e[0m"
-elif [ "$DEPLOY_TYPE" == "lxc" ]; then
-    echo -e "\e[33mPlease make sure to comment out the first block (module \"docker_vm\") and uncomment the blocks for docker_template and docker_lxc in /home/homelab/terraform/main.tf\e[0m"
-fi
+# Important Notes
+echo -e "\e[32mPlease make sure to update the SSH public key in the following files:\e[0m"
+echo -e "\e[32m- /home/homelab/terraform/modules/docker_vm/main_tf (replace YOUR_SSH_PUBLIC_KEY)\e[0m"
+echo -e "\e[32m- /home/homelab/packer/ubuntu-server-jammy-docker/http/user-data (update ssh_authorized_keys: - ssh-rsa)\e[0m"
+echo -e "\e[35m- /home/homelab/packer/ubuntu-server-jammy-docker/ubuntu-server-jammy-docker.pkr.hcl (CHANGE DEPLOYMENT_IP WITH IP WHERE YOU RUN THIS SCRIPT)\e[0m"
 
 # Test SSH connection to GitHub for private repositories
 if [ "$REPO_TYPE" == "private" ]; then
@@ -154,35 +146,16 @@ if [ "$EDITED_FILES" != "yes" ]; then
     exit 0
 fi
 
-if [ "$DEPLOY_TYPE" == "lxc" ]; then
-    # Run Terraform init and apply
-    TERRAFORM_DIR="$REPO_DIR/terraform/"
-    if [ -d "$TERRAFORM_DIR" ]; then
-        echo "Navigating to $TERRAFORM_DIR..."
-        cd "$TERRAFORM_DIR" || exit
-        echo "Initializing Terraform..."
-        terraform init
-        echo "Applying Terraform configuration..."
-        terraform apply -auto-approve
-    else
-        echo "Terraform directory $TERRAFORM_DIR does not exist. Check the repository."
-        exit 1
-    fi
-elif [ "$DEPLOY_TYPE" == "vm" ]; then
-    # Initialize Packer and build VM
-    echo "Navigating to /home/homelab/packer..."
-    cd /home/homelab/packer || exit
-    echo "Initializing Packer..."
-    packer init packer.pkr.hcl
-    echo "Navigating to ubuntu-server-jammy-docker directory..."
-    cd ubuntu-server-jammy-docker || exit
-    echo "Validating Packer template..."
-    packer validate -var-file='../credentials.pkr.hcl' ./ubuntu-server-jammy-docker.pkr.hcl
-    echo "Building VM with Packer..."
-    packer build -var-file='../credentials.pkr.hcl' ./ubuntu-server-jammy-docker.pkr.hcl
-else
-    echo "Invalid deployment type selected. Please choose either 'lxc' or 'vm'."
-    exit 1
-fi
+# Initialize Packer and build VM
+echo "Navigating to /home/homelab/packer..."
+cd /home/homelab/packer || exit
+echo "Initializing Packer..."
+packer init packer.pkr.hcl
+echo "Navigating to ubuntu-server-jammy-docker directory..."
+cd ubuntu-server-jammy-docker || exit
+echo "Validating Packer template..."
+packer validate -var-file='../credentials.pkr.hcl' ./ubuntu-server-jammy-docker.pkr.hcl
+echo "Building VM with Packer..."
+packer build -var-file='../credentials.pkr.hcl' ./ubuntu-server-jammy-docker.pkr.hcl
 
 echo "Process complete! Visit www.merox.dev for more :)."
