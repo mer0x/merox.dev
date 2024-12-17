@@ -91,22 +91,29 @@ read REPO_TYPE
 echo -e "\e[33mPlease enter the repository link: \e[0m"
 read REPO_URL
 
-if [ "$REPO_TYPE" == "private" ]; then
-    # Generate SSH key
-    SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
-    if [ ! -f "$SSH_KEY_PATH" ]; then
-        echo "Generating SSH key..."
-        ssh-keygen -t ed25519 -C "merox@homelab" -f "$SSH_KEY_PATH" -N ""
-        
-        echo -e "\e[32mYour public key is:\e[0m"
-        cat "${SSH_KEY_PATH}.pub"
+# Generate SSH key
+SSH_KEY_PATH="$HOME/.ssh/id_rsa"
+if [ ! -f "$SSH_KEY_PATH" ]; then
+    echo "Generating SSH key..."
+    ssh-keygen -t rsa -b 4096 -C "merox@homelab" -f "$SSH_KEY_PATH" -N ""
+    
+    echo -e "\e[32mYour public key is:\e[0m"
+    cat "${SSH_KEY_PATH}.pub"
+    if [ "$REPO_TYPE" == "private" ]; then
         echo -e "\e[33mAdd the public key to GitHub under Deploy Keys and press Enter...\e[0m"
         read -r
-    else
-        echo "SSH key already exists at $SSH_KEY_PATH."
     fi
+else
+    echo "SSH key already exists at $SSH_KEY_PATH."
+fi
 
-    # Test SSH connection to GitHub
+# Important Notes
+echo -e "\e[32mPlease make sure to update the SSH public key in the following files:\e[0m"
+echo -e "\e[32m- /home/homelab/terraform/modules/docker_vm/main_tf (replace YOUR_SSH_PUBLIC_KEY)\e[0m"
+echo -e "\e[32m- /home/homelab/packer/ubuntu-server-jammy-docker/http/user-data (update ssh_authorized_keys: - ssh-rsa)\e[0m"
+
+# Test SSH connection to GitHub for private repositories
+if [ "$REPO_TYPE" == "private" ]; then
     echo "Testing SSH connection to GitHub..."
     if ssh -o StrictHostKeyChecking=no -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
         echo "SSH connection is functional."
