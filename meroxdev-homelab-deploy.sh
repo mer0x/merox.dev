@@ -116,6 +116,9 @@ if [ "$DEPLOY_TYPE" == "vm" ]; then
     echo -e "\e[32mPlease make sure to update the SSH public key in the following files:\e[0m"
     echo -e "\e[32m- /home/homelab/terraform/modules/docker_vm/main_tf (replace YOUR_SSH_PUBLIC_KEY)\e[0m"
     echo -e "\e[32m- /home/homelab/packer/ubuntu-server-jammy-docker/http/user-data (update ssh_authorized_keys: - ssh-rsa)\e[0m"
+    echo -e "\e[35m- /home/homelab/packer/ubuntu-server-jammy-docker/ubuntu-server-jammy-docker.pkr.hcl (CHANGE DEPLOYMENT_IP WITH IP WHERE YOU RUN THIS SCRIPT)\e[0m"
+elif [ "$DEPLOY_TYPE" == "lxc" ]; then
+    echo -e "\e[33mPlease make sure to comment out the first block (module \"docker_vm\") and uncomment the blocks for docker_template and docker_lxc in /home/homelab/terraform/main.tf\e[0m"
 fi
 
 # Test SSH connection to GitHub for private repositories
