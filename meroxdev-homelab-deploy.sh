@@ -7,10 +7,14 @@ echo -e "\033[36;1m ██║  ██║██╔══██╗██╔══�
 echo -e "\033[36;1m ███████║███████║██║      \033[0m"
 echo -e "\033[36;1m ██╔══██║██╔══██║██║      \033[0m"
 echo -e "\033[36;1m ██║  ██║██║  ██║╚██████╗ \033[0m"
-echo -e "\033[36;1m ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ \033[0m"
+echo -e "\033[36;1m ╚═╝  ╚═╝╚═╝  ╚═════╝ \033[0m"
 echo -e "\033[36;1m                         \033[0m"
 echo -e "\033[33;1m Homelab as Code by Merox.dev \033[0m"
 echo -e "\n"
+
+# Ask for deployment type (LXC or VM)
+echo -e "\e[33mDo you want to deploy to LXC or VM? (lxc/vm): \e[0m"
+read DEPLOY_TYPE
 
 # Ensure sudo is installed without using sudo
 if ! command -v sudo &> /dev/null; then
@@ -107,10 +111,12 @@ else
     echo "SSH key already exists at $SSH_KEY_PATH."
 fi
 
-# Important Notes
-echo -e "\e[32mPlease make sure to update the SSH public key in the following files:\e[0m"
-echo -e "\e[32m- /home/homelab/terraform/modules/docker_vm/main_tf (replace YOUR_SSH_PUBLIC_KEY)\e[0m"
-echo -e "\e[32m- /home/homelab/packer/ubuntu-server-jammy-docker/http/user-data (update ssh_authorized_keys: - ssh-rsa)\e[0m"
+# Important Notes if VM is selected
+if [ "$DEPLOY_TYPE" == "vm" ]; then
+    echo -e "\e[32mPlease make sure to update the SSH public key in the following files:\e[0m"
+    echo -e "\e[32m- /home/homelab/terraform/modules/docker_vm/main_tf (replace YOUR_SSH_PUBLIC_KEY)\e[0m"
+    echo -e "\e[32m- /home/homelab/packer/ubuntu-server-jammy-docker/http/user-data (update ssh_authorized_keys: - ssh-rsa)\e[0m"
+fi
 
 # Test SSH connection to GitHub for private repositories
 if [ "$REPO_TYPE" == "private" ]; then
@@ -144,10 +150,6 @@ if [ "$EDITED_FILES" != "yes" ]; then
     echo "Please edit the specific files declared in the tutorial before proceeding."
     exit 0
 fi
-
-# Ask for deployment type (LXC or VM)
-echo -e "\e[33mDo you want to deploy to LXC or VM? (lxc/vm): \e[0m"
-read DEPLOY_TYPE
 
 if [ "$DEPLOY_TYPE" == "lxc" ]; then
     # Run Terraform init and apply
