@@ -1,10 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1712 899" width="100%" height="100%" preserveAspectRatio="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1712 899">
   <defs>
-    <linearGradient id="gradient9" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#2C3E50"/> <!-- Negru mat pentru o bază stabilă -->
-      <stop offset="0.5" stop-color="#5D80B0"/> <!-- Albastru-celestial pentru un accent modern și luminos -->
-      <stop offset="1" stop-color="#34495E"/> <!-- Gri-albastru pentru completare și echilibru -->
+    <!-- Gradient geometric modern -->
+    <linearGradient id="geoGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#334155"/>
     </linearGradient>
+    
+    <!-- Pattern cu triunghiuri -->
+    <pattern id="trianglePattern" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M25 0L50 43.3L0 43.3Z" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+    </pattern>
+    
+    <!-- Pattern cu romburi -->
+    <pattern id="diamondPattern" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+      <rect x="5" y="5" width="20" height="20" transform="rotate(45 15 15)" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </pattern>
   </defs>
-  <rect width="1712" height="899" fill="url(#gradient9)"/>
+  
+  <!-- Background cu gradient -->
+  <rect width="100%" height="100%" fill="url(#geoGradient)"/>
+  
+  <!-- Layer-uri cu pattern-uri geometrice -->
+  <rect width="100%" height="100%" fill="url(#trianglePattern)"/>
+  <rect width="100%" height="100%" fill="url(#diamondPattern)"/>
 </svg>
