@@ -2,8 +2,9 @@
   <!-- Background gradient - dark with subtle gradient -->
   <defs>
 <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#009688" />  <!-- Teal verde -->
-  <stop offset="100%" stop-color="#4b0082" />  <!-- Mov imperial -->
+  <stop offset="0%" stop-color="#00f0ff" />  <!-- Teal neon -->
+  <stop offset="50%" stop-color="#6a0dad" />  <!-- Violet cosmic -->
+  <stop offset="100%" stop-color="#26004d" />  <!-- Mov foarte închis -->
 </linearGradient>
     
     <!-- Grid patterns -->
