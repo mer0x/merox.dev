@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
   <!-- Background gradient - dark with subtle gradient -->
   <defs>
-    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#080808" />
-      <stop offset="100%" stop-color="#111111" />
-    </linearGradient>
+<linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+  <stop offset="0%" stop-color="#009688" />  <!-- Teal verde -->
+  <stop offset="100%" stop-color="#4b0082" />  <!-- Mov imperial -->
+</linearGradient>
     
     <!-- Grid patterns -->
     <pattern id="gridPattern" width="100" height="100" patternUnits="userSpaceOnUse">
