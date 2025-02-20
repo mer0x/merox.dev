@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
-  <!-- Background gradient - dark theme matching black and #82DCD2 -->
+  <!-- Background gradient - dark with subtle gradient -->
   <defs>
     <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#000000" />
-      <stop offset="100%" stop-color="#082B3D" />
+      <stop offset="0%" stop-color="#080808" />
+      <stop offset="100%" stop-color="#111111" />
     </linearGradient>
     
-    <!-- Grid pattern using #82DCD2 -->
+    <!-- Grid patterns -->
     <pattern id="gridPattern" width="100" height="100" patternUnits="userSpaceOnUse">
-      <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#82DCD2" stroke-width="0.5" stroke-opacity="0.2"/>
+      <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#82DCD2" stroke-width="0.5" stroke-opacity="0.15"/>
     </pattern>
     
     <!-- Glow filters -->
@@ -52,9 +52,9 @@
   <circle cx="400" cy="100" r="4" fill="#FF9E00" filter="url(#orangeGlow)" />
   <circle cx="900" cy="480" r="3" fill="#82DCD2" filter="url(#tealGlow)" />
   
-  <!-- Connection lines with colors -->
+  <!-- Connection lines with gradient effects -->
   <path d="M 200,150 L 400,100 L 600,200 L 800,350 L 900,480" 
-        stroke="#82DCD2" stroke-width="1.5" stroke-opacity="0.4" fill="none">
+        stroke="url(#tealOrangeGradient)" stroke-width="1.5" stroke-opacity="0.4" fill="none">
     <animate attributeName="stroke-opacity" values="0.2;0.5;0.2" dur="8s" repeatCount="indefinite" />
   </path>
   
@@ -75,55 +75,46 @@
   
   <!-- Modern UI Element 1 -->
   <g transform="translate(825, 300)">
-    <rect x="0" y="0" width="250" height="50" rx="5" fill="rgba(28, 31, 44, 0.7)" stroke="#82DCD2" stroke-width="1" stroke-opacity="0.5" />
-    <line x1="10" y1="15" x2="70" y2="15" stroke="#82DCD2" stroke-width="2" stroke-opacity="0.8" />
-    <line x1="85" y1="15" x2="125" y2="15" stroke="#9D4EDD" stroke-width="2" stroke-opacity="0.8" />
-    <line x1="140" y1="15" x2="190" y2="15" stroke="#FF9E00" stroke-width="2" stroke-opacity="0.8" />
-    <line x1="10" y1="35" x2="50" y2="35" stroke="#82DCD2" stroke-width="2" stroke-opacity="0.6" />
-    <line x1="65" y1="35" x2="130" y2="35" stroke="#9D4EDD" stroke-width="2" stroke-opacity="0.6" />
+    <rect x="0" y="0" width="250" height="50" rx="3" fill="#0F0F0F" stroke="#82DCD2" stroke-width="1" stroke-opacity="0.4" />
+    <line x1="10" y1="15" x2="70" y2="15" stroke="#82DCD2" stroke-width="2" stroke-opacity="0.7" />
+    <line x1="85" y1="15" x2="125" y2="15" stroke="#9D4EDD" stroke-width="2" stroke-opacity="0.7" />
+    <line x1="140" y1="15" x2="190" y2="15" stroke="#FF9E00" stroke-width="2" stroke-opacity="0.7" />
+    <line x1="10" y1="35" x2="50" y2="35" stroke="#82DCD2" stroke-width="2" stroke-opacity="0.5" />
+    <line x1="65" y1="35" x2="130" y2="35" stroke="#9D4EDD" stroke-width="2" stroke-opacity="0.5" />
     <circle cx="230" cy="15" r="8" stroke="#FF9E00" stroke-width="1" fill="none" />
     <path d="M 225,20 L 215,30" stroke="#FF9E00" stroke-width="1" stroke-opacity="0.7" fill="none" />
   </g>
   
   <!-- Horizontal traces with different colors -->
-  <line x1="0" y1="120" x2="1200" y2="120" stroke="#9D4EDD" stroke-width="1" stroke-opacity="0.2" />
-  <line x1="0" y1="240" x2="1200" y2="240" stroke="#82DCD2" stroke-width="1" stroke-opacity="0.2" />
-  <line x1="0" y1="360" x2="1200" y2="360" stroke="#FF9E00" stroke-width="1" stroke-opacity="0.2" />
-  <line x1="0" y1="480" x2="1200" y2="480" stroke="#9D4EDD" stroke-width="1" stroke-opacity="0.2" />
+  <line x1="0" y1="120" x2="1200" y2="120" stroke="#9D4EDD" stroke-width="1" stroke-opacity="0.15" />
+  <line x1="0" y1="240" x2="1200" y2="240" stroke="#82DCD2" stroke-width="1" stroke-opacity="0.15" />
+  <line x1="0" y1="360" x2="1200" y2="360" stroke="#FF9E00" stroke-width="1" stroke-opacity="0.15" />
+  <line x1="0" y1="480" x2="1200" y2="480" stroke="#9D4EDD" stroke-width="1" stroke-opacity="0.15" />
   
   <!-- Vertical traces with different colors -->
-  <line x1="300" y1="0" x2="300" y2="600" stroke="#FF9E00" stroke-width="1" stroke-opacity="0.2" />
-  <line x1="600" y1="0" x2="600" y2="600" stroke="#82DCD2" stroke-width="1" stroke-opacity="0.2" />
-  <line x1="900" y1="0" x2="900" y2="600" stroke="#9D4EDD" stroke-width="1" stroke-opacity="0.2" />
+  <line x1="300" y1="0" x2="300" y2="600" stroke="#FF9E00" stroke-width="1" stroke-opacity="0.15" />
+  <line x1="600" y1="0" x2="600" y2="600" stroke="#82DCD2" stroke-width="1" stroke-opacity="0.15" />
+  <line x1="900" y1="0" x2="900" y2="600" stroke="#9D4EDD" stroke-width="1" stroke-opacity="0.15" />
   
   <!-- Animated scanning lines -->
   <line x1="0" y1="300" x2="1200" y2="300" stroke="#82DCD2" stroke-width="1" stroke-opacity="0.5">
     <animate attributeName="y1" values="0;600;0" dur="15s" repeatCount="indefinite" />
     <animate attributeName="y2" values="0;600;0" dur="15s" repeatCount="indefinite" />
-    <animate attributeName="stroke-opacity" values="0.2;0.5;0.2" dur="15s" repeatCount="indefinite" />
+    <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="15s" repeatCount="indefinite" />
   </line>
   
   <line x1="600" y1="0" x2="600" y2="600" stroke="#FF9E00" stroke-width="1" stroke-opacity="0.3">
     <animate attributeName="x1" values="0;1200;0" dur="20s" repeatCount="indefinite" />
     <animate attributeName="x2" values="0;1200;0" dur="20s" repeatCount="indefinite" />
-    <animate attributeName="stroke-opacity" values="0.2;0.4;0.2" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="20s" repeatCount="indefinite" />
   </line>
   
   <!-- Abstract tech shapes -->
   <path d="M 100,500 L 150,550 L 80,580 Z" fill="#9D4EDD" fill-opacity="0.2" stroke="#9D4EDD" stroke-width="1" stroke-opacity="0.5" />
   <path d="M 1050,100 L 1100,150 L 1030,180 Z" fill="#FF9E00" fill-opacity="0.2" stroke="#FF9E00" stroke-width="1" stroke-opacity="0.5" />
   
-  <!-- Additional floating elements -->
-  <g transform="translate(120, 220)">
-    <rect width="80" height="30" rx="4" fill="rgba(28, 31, 44, 0.6)" stroke="#82DCD2" stroke-width="0.5" />
-    <circle cx="15" cy="15" r="5" fill="#82DCD2" fill-opacity="0.7" />
-    <line x1="30" y1="15" x2="70" y2="15" stroke="#82DCD2" stroke-width="1" stroke-opacity="0.7" />
-  </g>
-  
-  <g transform="translate(950, 400)">
-    <rect width="100" height="40" rx="4" fill="rgba(28, 31, 44, 0.6)" stroke="#9D4EDD" stroke-width="0.5" />
-    <circle cx="20" cy="20" r="6" fill="#9D4EDD" fill-opacity="0.7" />
-    <line x1="35" y1="15" x2="90" y2="15" stroke="#9D4EDD" stroke-width="1" stroke-opacity="0.7" />
-    <line x1="35" y1="25" x2="70" y2="25" stroke="#9D4EDD" stroke-width="1" stroke-opacity="0.7" />
-  </g>
+  <!-- Subtle pulse overlay -->
+  <rect width="1200" height="600" fill="url(#bgGradient)" opacity="0.05">
+    <animate attributeName="opacity" values="0.03;0.07;0.03" dur="10s" repeatCount="indefinite" />
+  </rect>
 </svg>
